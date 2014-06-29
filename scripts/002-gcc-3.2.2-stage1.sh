@@ -3,9 +3,11 @@
 
  ## Download the source code.
  SOURCE=https://github.com/downloads/ps2dev/ps2toolchain/gcc-3.2.2.tar.bz2
- wget --continue --no-check-certificate $SOURCE || { exit 1; }
+ NAME="`basename \"$SOURCE\"`"
+ wget --continue --no-check-certificate $SOURCE || curl -o "$NAME" "$SOURCE" || { exit 1; }
 
- GCC_VERSION=200583
+ # GCC 4.9.0 release:
+ GCC_VERSION=209612
  rm -Rf gcc-r${GCC_VERSION} || { exit 1; }
  svn checkout -r ${GCC_VERSION} svn://gcc.gnu.org/svn/gcc/trunk "gcc-r${GCC_VERSION}" || { exit 1; }
 

@@ -2,13 +2,15 @@
 # binutils-2.14.sh by Dan Peori (danpeori@oopo.net)
 
  ## Download the source code.
- SOURCE=https://github.com/downloads/ps2dev/ps2toolchain/binutils-2.14.tar.bz2
- wget --continue --no-check-certificate $SOURCE || { exit 1; }
+ SOURCE=https://cloud.github.com/downloads/ps2dev/ps2toolchain/binutils-2.14.tar.bz2
+ NAME="`basename \"$SOURCE\"`"
+ set -x
+ wget --continue --no-check-certificate $SOURCE || curl -o "$NAME" "$SOURCE" || { exit 1; }
 
  BASENAME=binutils-2.24
  FILENAME="$BASENAME.tar.bz2"
  SOURCE="http://kernelloader.cvs.sourceforge.net/viewvc/kernelloader/linux/src/$FILENAME?revision=1.1"
- wget --continue --no-check-certificate -O "$FILENAME" "$SOURCE" || { exit 1; }
+ wget --continue --no-check-certificate -O "$FILENAME" "$SOURCE" || curl -o "$FILENAME" "$SOURCE" || { exit 1; }
 
  ## Unpack the source code.
  rm -Rf binutils-2.14 && tar xfvj binutils-2.14.tar.bz2 || { exit 1; }
