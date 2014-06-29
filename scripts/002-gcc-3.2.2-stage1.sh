@@ -2,7 +2,7 @@
 # gcc-3.2.2-stage1.sh by Dan Peori (danpeori@oopo.net)
 
  ## Download the source code.
- SOURCE=https://github.com/downloads/ps2dev/ps2toolchain/gcc-3.2.2.tar.bz2
+ SOURCE=https://cloud.github.com/downloads/ps2dev/ps2toolchain/gcc-3.2.2.tar.bz2
  NAME="`basename \"$SOURCE\"`"
  wget --continue --no-check-certificate $SOURCE || curl -o "$NAME" "$SOURCE" || { exit 1; }
 
